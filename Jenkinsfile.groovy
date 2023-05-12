@@ -3,7 +3,7 @@ pipeline {
         docker {
             image '18-alpine'
             args "-u root -p 3000:3000 -e ROOT_PASSWORD=${env.ROOT_PASSWORD}"
-            command 'sh', '-c', 'echo "anas" | sudo -S su'
+            command "sh -c 'echo \"${env.ROOT_PASSWORD}\" | sudo -S su'"
 
         }
     }
