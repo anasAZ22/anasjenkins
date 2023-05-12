@@ -1,7 +1,8 @@
 pipeline {
     agent {
         docker {
-            image 'node:14-alpine'
+            sh 'echo"anas" | sudo -S ' 
+            image '18-alpine'
             args "-u root -p 3000:3000 -e ROOT_PASSWORD=${env.ROOT_PASSWORD}"
         }
     }
