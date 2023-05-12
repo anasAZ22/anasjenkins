@@ -7,13 +7,14 @@ pipeline {
                 environment {
                     ROOT_PASSWORD = "${env.ROOT_PASSWORD}"
                 }
+                steps {
+                    sh 'echo $ROOT_PASSWORD | sudo -S su'
+                }
             }
-
         }
     }
     environment {
         CI = 'true'
-        ROOT_PASSWORD = credentials('anas')
     }
     stages {
         stage('Build') {
