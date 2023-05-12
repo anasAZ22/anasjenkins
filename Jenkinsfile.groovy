@@ -2,8 +2,12 @@ pipeline {
     agent {
         docker {
             image '18-alpine'
-            args "-u root -p 3000:3000 -e ROOT_PASSWORD=${env.ROOT_PASSWORD}"
-            command "sh -c 'echo \"${env.ROOT_PASSWORD}\" | sudo -S su'"
+            args "-u root -p 3000:3000"
+            withCredentials([string(credentialsId: 'anas', variable: 'ROOT_PASSWORD')]) {
+                environment {
+                    ROOT_PASSWORD = "${env.ROOT_PASSWORD}"
+                }
+            }
 
         }
     }
