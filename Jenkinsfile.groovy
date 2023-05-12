@@ -2,11 +2,12 @@ pipeline {
     agent {
         docker {
             image 'node:14-alpine'
-            args '-p 3000:3000'
+            args "-u root -p 3000:3000 -e ROOT_PASSWORD=${env.ROOT_PASSWORD}"
         }
     }
     environment {
         CI = 'true'
+        ROOT_PASSWORD = credentials('anas')
     }
     stages {
         stage('Build') {
