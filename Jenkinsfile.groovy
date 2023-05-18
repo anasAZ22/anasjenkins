@@ -1,30 +1,33 @@
 pipeline {
     agent {
-        docker {
-            image 'node:18-alpine'
-            args '-v $HOME/.npm:/root/.npm' // Montage du volume pour le cache npm
+        dockerfile {
+            filename 'Dockerfile.jenkinsAgent'
         }
     }
+    environment {
+        CI = 'true'
+    }
     stages {
-        stage('Declarative: Checkout SCM') {
+        stage('Build') {
             steps {
-                checkout scm
+                sh 'npm install'
             }
         }
         stage('Test') {
             steps {
-                sh 'npm install'
-                // Autres étapes de test
-            }
-        }
-        stage('Build') {
-            steps {
-                // Étapes de construction
+                sh './jenkins/scripts/test.sh'
             }
         }
         stage('Deliver') {
             steps {
-                // Étapes de livraison
+                sh './jenkins/scripts/deliver.sh'
+                input message: 'Finished using the web site? (Click "Proceed" to continue)'
+                sh './jenkins/scripts/kill.sh'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh './jenkins/scripts/deploy.sh'
             }
         }
     }
