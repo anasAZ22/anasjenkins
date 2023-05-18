@@ -1,9 +1,5 @@
 pipeline {
-    agent {
-        dockerfile {
-            filename 'Dockerfile.jenkinsAgent'
-        }
-    }
+    agent any
     environment {
         CI = 'true'
     }
