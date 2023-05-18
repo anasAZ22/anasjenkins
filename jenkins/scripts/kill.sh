@@ -1,7 +1,7 @@
-#!/usr/bin/env sh
+#!/bin/bash
 
-echo 'The following command terminates the "npm start" process using its PID'
-echo '(written to ".pidfile"), all of which were conducted when "deliver.sh"'
-echo 'was executed.'
-set -x
-kill $(cat .pidfile)
+# Exécuter les commandes pour arrêter ou nettoyer des ressources
+# après la livraison de votre application
+# Par exemple :
+echo "Killing resources..."
+# ... Commandes pour arrêter des conteneurs ou nettoyer des ressources ...
