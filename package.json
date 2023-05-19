@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server  --openssl-legacy-provider --mode development --hot",
+    "start": "webpack-dev-server   --mode development --hot",
     "build": "webpack --mode production",
-    "test" : "npm start main.js --openssl-legacy-provider"
+    "test" : "npm start main.js "
   },
   "keywords": [],
   "author": "Shovan Dhara",
