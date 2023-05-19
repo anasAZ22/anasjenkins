@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --mode development --hot",
     "build": "webpack --mode production",
-    "test" : "npm start"
+    "test" : "npm start main.js"
   },
   "keywords": [],
   "author": "Shovan Dhara",
